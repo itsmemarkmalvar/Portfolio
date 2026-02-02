@@ -13,9 +13,32 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
-  title: "Mark Joseph N. Malvar | Portfolio",
+  title: "Mark Joseph N. Malvar | Full-Stack Developer",
   description:
-    "Portfolio of Mark Joseph N. Malvar — Computer Science graduate specializing in React, Next.js, Laravel, and full-stack development.",
+    "Full-stack developer specializing in React, Next.js, Laravel, and React Native. BSCS graduate — open to opportunities. View projects and get in touch.",
+  keywords: [
+    "Mark Joseph Malvar",
+    "Full-Stack Developer",
+    "React",
+    "Next.js",
+    "Laravel",
+    "React Native",
+    "TypeScript",
+    "Portfolio",
+  ],
+  authors: [{ name: "Mark Joseph N. Malvar", url: "https://github.com/itsmemarkmalvar" }],
+  openGraph: {
+    title: "Mark Joseph N. Malvar | Full-Stack Developer",
+    description:
+      "Full-stack developer — React, Next.js, Laravel. BSCS graduate. Open to opportunities.",
+    type: "website",
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "Mark Joseph N. Malvar | Full-Stack Developer",
+    description: "Full-stack developer. React, Next.js, Laravel. Open to opportunities.",
+  },
+  robots: "index, follow",
 };
 
 export default function RootLayout({

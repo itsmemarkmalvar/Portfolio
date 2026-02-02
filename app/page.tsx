@@ -1,4 +1,16 @@
 import Link from "next/link";
+import {
+  Code2,
+  Server,
+  Smartphone,
+  Braces,
+  GraduationCap,
+  ExternalLink,
+  Mail,
+  Sparkles,
+  Github,
+  Linkedin,
+} from "lucide-react";
 import { Button } from "@/components/ui/button";
 import {
   Card,
@@ -18,31 +30,36 @@ const navLinks = [
   { href: "#contact", label: "Contact" },
 ];
 
-const techStack = [
-  "React",
-  "React Native",
-  "Next.js",
-  "Laravel",
-  "Tailwind CSS",
-];
-
-const languages = [
-  "JavaScript",
-  "TypeScript",
-  "PHP",
-  "Java",
-  "Python",
-  "C++",
-  "HTML",
-  "CSS",
+const skillGroups = [
+  {
+    title: "Frontend",
+    icon: Code2,
+    items: ["React", "Next.js", "Tailwind CSS"],
+  },
+  {
+    title: "Backend",
+    icon: Server,
+    items: ["Laravel", "PHP"],
+  },
+  {
+    title: "Mobile",
+    icon: Smartphone,
+    items: ["React Native"],
+  },
+  {
+    title: "Languages",
+    icon: Braces,
+    items: ["JavaScript", "TypeScript", "PHP", "Java", "Python", "C++", "HTML", "CSS"],
+  },
 ];
 
 const projects = [
   {
     title: "NetGenie",
     description:
-      "AI-powered ISP assistant for PLDT, Globe, and Converge. Provides instant answers about plans, technical issues, and personalized recommendations — 24/7 support in one place.",
+      "AI-powered ISP assistant for PLDT, Globe, and Converge. Delivers instant answers about plans, technical issues, and personalized recommendations — 24/7 support in one place.",
     url: "https://chatbot-frontend-nine-xi.vercel.app/",
+    repo: null as string | null,
     tags: ["React", "Next.js", "AI"],
   },
 ];
@@ -51,19 +68,24 @@ const contactLinks = [
   {
     label: "LinkedIn",
     href: "https://www.linkedin.com/in/mark-joseph-malvar-7851103aa/",
+    icon: Linkedin,
     external: true,
   },
   {
     label: "GitHub",
     href: "https://github.com/itsmemarkmalvar",
+    icon: Github,
     external: true,
   },
   {
     label: "malvar.593@gmail.com",
     href: "mailto:malvar.593@gmail.com",
+    icon: Mail,
     external: false,
   },
 ];
+
+const resumeUrl = "#contact"; // Replace with your resume/CV URL when ready
 
 export default function Home() {
   return (
@@ -82,6 +104,11 @@ export default function Home() {
                 </Button>
               </li>
             ))}
+            <li>
+              <Button size="sm" className="rounded-full" asChild>
+                <Link href={resumeUrl}>Resume</Link>
+              </Button>
+            </li>
           </ul>
         </nav>
       </header>
@@ -111,16 +138,25 @@ export default function Home() {
           />
 
           <div className="relative mx-auto max-w-4xl">
-            <Badge variant="secondary" className="mb-5 rounded-full px-4 py-1.5 text-xs font-semibold uppercase tracking-wider">
-              Bachelor of Science in Computer Science
-            </Badge>
-            <h1 className="mb-5 max-w-3xl text-4xl font-bold leading-[1.1] tracking-tight sm:text-5xl md:text-6xl lg:text-7xl">
+            <div className="mb-5 flex flex-wrap items-center gap-3">
+              <Badge variant="secondary" className="rounded-full px-4 py-1.5 text-xs font-semibold uppercase tracking-wider">
+                Bachelor of Science in Computer Science
+              </Badge>
+              <Badge variant="outline" className="rounded-full border-primary/60 px-4 py-1.5 text-xs font-semibold text-primary">
+                <Sparkles className="mr-1.5 size-3.5" aria-hidden />
+                Open to opportunities
+              </Badge>
+            </div>
+            <h1 className="mb-3 max-w-3xl text-4xl font-bold leading-[1.1] tracking-tight sm:text-5xl md:text-6xl lg:text-7xl">
               Hi, I&apos;m{" "}
               <span className="text-primary">Mark Joseph</span> Malvar
             </h1>
-            <p className="mb-10 max-w-xl text-lg text-muted-foreground leading-relaxed sm:text-xl">
+            <p className="mb-2 text-xl font-medium text-muted-foreground sm:text-2xl">
+              Full-Stack Developer
+            </p>
+            <p className="mb-10 max-w-xl text-lg text-muted-foreground leading-relaxed">
               I build web and mobile apps with React, Next.js, and Laravel —
-              focused on clean code and great UX.
+              focused on clean code, great UX, and shipping products that users love.
             </p>
             <div className="flex flex-wrap gap-4">
               <Button size="lg" className="min-h-12 rounded-full px-7 shadow-lg" asChild>
@@ -128,6 +164,9 @@ export default function Home() {
               </Button>
               <Button size="lg" variant="outline" className="min-h-12 rounded-full px-7" asChild>
                 <Link href="#contact">Get in Touch</Link>
+              </Button>
+              <Button size="lg" variant="secondary" className="min-h-12 rounded-full px-7" asChild>
+                <Link href={resumeUrl}>Download CV</Link>
               </Button>
             </div>
           </div>
@@ -142,12 +181,35 @@ export default function Home() {
               <h2 className="text-2xl font-bold sm:text-3xl">About</h2>
             </div>
             <p className="max-w-2xl text-base text-muted-foreground leading-relaxed sm:text-lg">
-              I&apos;m a Computer Science graduate focused on full-stack and
-              mobile development. I build responsive web apps with React and
-              Next.js, backend systems with Laravel and PHP, and have experience
-              across JavaScript, TypeScript, Python, Java, and C++. I enjoy
-              turning ideas into clean, user-friendly products.
+              I&apos;m a Computer Science graduate focused on full-stack and mobile development.
+              I turn ideas into reliable, user-friendly products — from responsive web apps and APIs
+              to cross-platform mobile experiences.
             </p>
+            <ul className="mt-6 max-w-2xl space-y-2 text-base text-muted-foreground sm:text-lg">
+              <li className="flex items-center gap-2">
+                <span className="size-1.5 rounded-full bg-primary" aria-hidden />
+                Build and ship web & mobile apps with React, Next.js, and Laravel
+              </li>
+              <li className="flex items-center gap-2">
+                <span className="size-1.5 rounded-full bg-primary" aria-hidden />
+                Strong foundation in JavaScript, TypeScript, PHP, and modern tooling
+              </li>
+              <li className="flex items-center gap-2">
+                <span className="size-1.5 rounded-full bg-primary" aria-hidden />
+                Focused on clean code, performance, and user experience
+              </li>
+            </ul>
+
+            <div className="mt-12 rounded-xl border border-border bg-card/50 p-6">
+              <h3 className="mb-3 flex items-center gap-2 text-sm font-semibold uppercase tracking-wider text-primary">
+                <GraduationCap className="size-4" aria-hidden />
+                Education
+              </h3>
+              <p className="font-medium text-foreground">Bachelor of Science in Computer Science</p>
+              <p className="mt-1 text-sm text-muted-foreground">
+                Focus: software development, full-stack and mobile applications
+              </p>
+            </div>
           </div>
         </section>
 
@@ -159,39 +221,32 @@ export default function Home() {
               <div className="h-1 w-12 rounded-full bg-primary" aria-hidden />
               <h2 className="text-2xl font-bold sm:text-3xl">Skills</h2>
             </div>
-            <div className="mt-12 space-y-12">
-              <div>
-                <h3 className="mb-4 text-sm font-semibold uppercase tracking-wider text-primary">
-                  Tech Stack
-                </h3>
-                <div className="flex flex-wrap gap-3">
-                  {techStack.map((tech) => (
-                    <Badge
-                      key={tech}
-                      variant="secondary"
-                      className="rounded-full px-4 py-2.5 text-sm font-medium transition-colors hover:border-primary/50"
-                    >
-                      {tech}
-                    </Badge>
-                  ))}
-                </div>
-              </div>
-              <div>
-                <h3 className="mb-4 text-sm font-semibold uppercase tracking-wider text-primary">
-                  Programming Languages
-                </h3>
-                <div className="flex flex-wrap gap-3">
-                  {languages.map((lang) => (
-                    <Badge
-                      key={lang}
-                      variant="secondary"
-                      className="rounded-full px-4 py-2.5 text-sm font-medium transition-colors hover:border-primary/50"
-                    >
-                      {lang}
-                    </Badge>
-                  ))}
-                </div>
-              </div>
+            <p className="mb-12 max-w-xl text-muted-foreground">
+              Technologies and languages I use to build products.
+            </p>
+            <div className="grid gap-10 sm:grid-cols-2">
+              {skillGroups.map((group) => {
+                const Icon = group.icon;
+                return (
+                  <div key={group.title} className="rounded-xl border border-border bg-card/50 p-6">
+                    <h3 className="mb-4 flex items-center gap-2 text-sm font-semibold uppercase tracking-wider text-primary">
+                      <Icon className="size-4" aria-hidden />
+                      {group.title}
+                    </h3>
+                    <div className="flex flex-wrap gap-3">
+                      {group.items.map((item) => (
+                        <Badge
+                          key={item}
+                          variant="secondary"
+                          className="rounded-full px-4 py-2 text-sm font-medium transition-colors hover:border-primary/50"
+                        >
+                          {item}
+                        </Badge>
+                      ))}
+                    </div>
+                  </div>
+                );
+              })}
             </div>
           </div>
         </section>
@@ -204,7 +259,10 @@ export default function Home() {
               <div className="h-1 w-12 rounded-full bg-primary" aria-hidden />
               <h2 className="text-2xl font-bold sm:text-3xl">Projects</h2>
             </div>
-            <div className="mt-12 space-y-6">
+            <p className="mb-12 max-w-xl text-muted-foreground">
+              A selection of projects I&apos;ve built — from AI-powered tools to full-stack applications.
+            </p>
+            <div className="space-y-6">
               {projects.map((project) => (
                 <Card
                   key={project.title}
@@ -218,13 +276,20 @@ export default function Home() {
                       {project.description}
                     </CardDescription>
                     <CardAction>
-                      <Button variant="outline" size="default" className="rounded-full border-primary text-primary hover:bg-primary hover:text-primary-foreground" asChild>
+                      <Button
+                        variant="outline"
+                        size="default"
+                        className="rounded-full border-primary text-primary hover:bg-primary hover:text-primary-foreground"
+                        asChild
+                      >
                         <Link
                           href={project.url}
                           target="_blank"
                           rel="noopener noreferrer"
+                          className="inline-flex items-center gap-2"
                         >
-                          Visit →
+                          {project.repo && project.url === project.repo ? "View repo" : "Visit live"}
+                          <ExternalLink className="size-4" aria-hidden />
                         </Link>
                       </Button>
                     </CardAction>
@@ -239,6 +304,17 @@ export default function Home() {
                 </Card>
               ))}
             </div>
+            <p className="mt-8 text-center text-sm text-muted-foreground">
+              More projects on{" "}
+              <Link
+                href="https://github.com/itsmemarkmalvar"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="font-medium text-primary underline-offset-4 hover:underline"
+              >
+                GitHub
+              </Link>
+            </p>
           </div>
         </section>
 
@@ -248,32 +324,45 @@ export default function Home() {
           <div className="mx-auto max-w-4xl">
             <div className="mb-4 flex items-center gap-3">
               <div className="h-1 w-12 rounded-full bg-primary" aria-hidden />
-              <h2 className="text-2xl font-bold sm:text-3xl">Contact</h2>
+              <h2 className="text-2xl font-bold sm:text-3xl">Let&apos;s work together</h2>
             </div>
             <p className="mt-4 max-w-xl text-base text-muted-foreground leading-relaxed sm:text-lg">
-              Open to opportunities and collaboration. Reach out via LinkedIn,
-              GitHub, or email.
+              I&apos;m open to <strong className="text-foreground">full-time roles</strong>,{" "}
+              <strong className="text-foreground">freelance projects</strong>, and{" "}
+              <strong className="text-foreground">collaboration</strong>. Reach out — I&apos;d love to hear from you.
             </p>
             <div className="mt-10 flex flex-wrap gap-4">
-              {contactLinks.map((item) => (
-                <Button
-                  key={item.label}
-                  variant="outline"
-                  size="lg"
-                  className="min-h-12 rounded-full px-5"
-                  asChild
-                >
-                  <Link
-                    href={item.href}
-                    target={item.external ? "_blank" : undefined}
-                    rel={item.external ? "noopener noreferrer" : undefined}
-                    className="inline-flex items-center gap-2"
+              {contactLinks.map((item) => {
+                const Icon = item.icon;
+                return (
+                  <Button
+                    key={item.label}
+                    variant="outline"
+                    size="lg"
+                    className="min-h-12 rounded-full px-5"
+                    asChild
                   >
-                    {item.label}
-                    {item.external && <span aria-hidden>↗</span>}
-                  </Link>
-                </Button>
-              ))}
+                    <Link
+                      href={item.href}
+                      target={item.external ? "_blank" : undefined}
+                      rel={item.external ? "noopener noreferrer" : undefined}
+                      className="inline-flex items-center gap-2"
+                    >
+                      <Icon className="size-5" aria-hidden />
+                      {item.label}
+                      {item.external && <ExternalLink className="size-4" aria-hidden />}
+                    </Link>
+                  </Button>
+                );
+              })}
+            </div>
+            <div className="mt-8">
+              <Button size="lg" className="min-h-12 rounded-full px-7" asChild>
+                <Link href="mailto:malvar.593@gmail.com" className="inline-flex items-center gap-2">
+                  <Mail className="size-5" aria-hidden />
+                  Send me an email
+                </Link>
+              </Button>
             </div>
           </div>
         </section>
@@ -281,9 +370,31 @@ export default function Home() {
 
       {/* Footer */}
       <footer className="border-t border-border px-6 py-8">
-        <div className="mx-auto max-w-4xl text-center text-sm text-muted-foreground">
-          © {new Date().getFullYear()} Mark Joseph N. Malvar. All rights
-          reserved.
+        <div className="mx-auto flex max-w-4xl flex-col items-center justify-between gap-4 sm:flex-row">
+          <p className="text-center text-sm text-muted-foreground sm:text-left">
+            © {new Date().getFullYear()} Mark Joseph N. Malvar. All rights reserved.
+          </p>
+          <div className="flex items-center gap-6 text-sm text-muted-foreground">
+            <span className="hidden sm:inline">Built with Next.js</span>
+            <Link
+              href="https://www.linkedin.com/in/mark-joseph-malvar-7851103aa/"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="inline-flex items-center gap-1.5 transition-colors hover:text-foreground"
+            >
+              <Linkedin className="size-4" aria-hidden />
+              LinkedIn
+            </Link>
+            <Link
+              href="https://github.com/itsmemarkmalvar"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="inline-flex items-center gap-1.5 transition-colors hover:text-foreground"
+            >
+              <Github className="size-4" aria-hidden />
+              GitHub
+            </Link>
+          </div>
         </div>
       </footer>
     </div>
