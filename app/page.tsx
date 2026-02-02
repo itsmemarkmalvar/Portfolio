@@ -30,6 +30,27 @@ const navLinks = [
   { href: "#contact", label: "Contact" },
 ];
 
+/** Simple Icons slug for each skill (cdn.simpleicons.org/{slug}) */
+const skillLogos: Record<string, string> = {
+  React: "react",
+  "Next.js": "nextdotjs",
+  "Tailwind CSS": "tailwindcss",
+  Laravel: "laravel",
+  PHP: "php",
+  "React Native": "react",
+  JavaScript: "javascript",
+  TypeScript: "typescript",
+  Java: "openjdk",
+  Python: "python",
+  "C++": "cplusplus",
+  HTML: "html5",
+  CSS: "css",
+};
+
+const SKILL_ICON_SIZE = 20;
+const skillIconUrl = (name: string) =>
+  `https://cdn.simpleicons.org/${skillLogos[name] ?? "code"}/a1a1aa`;
+
 const skillGroups = [
   {
     title: "Frontend",
@@ -117,7 +138,7 @@ export default function Home() {
         {/* Hero */}
         <section
           id="hero"
-          className="relative overflow-hidden px-6 py-28 sm:py-36 md:py-40"
+          className="relative overflow-hidden px-6 py-20 sm:py-24 md:py-28"
         >
           <div
             className="pointer-events-none absolute inset-0 bg-[radial-gradient(ellipse_80%_60%_at_50%_-20%,var(--accent-glow),transparent)]"
@@ -165,16 +186,13 @@ export default function Home() {
               <Button size="lg" variant="outline" className="min-h-12 rounded-full px-7" asChild>
                 <Link href="#contact">Get in Touch</Link>
               </Button>
-              <Button size="lg" variant="secondary" className="min-h-12 rounded-full px-7" asChild>
-                <Link href={resumeUrl}>Download CV</Link>
-              </Button>
             </div>
           </div>
         </section>
 
         {/* About */}
-        <section id="about" className="px-6 py-24 sm:py-28">
-          <Separator className="mb-16" />
+        <section id="about" className="scroll-mt-24 px-6 py-16 sm:py-20">
+          <Separator className="mb-10" />
           <div className="mx-auto max-w-4xl">
             <div className="mb-4 flex items-center gap-3">
               <div className="h-1 w-12 rounded-full bg-primary" aria-hidden />
@@ -200,7 +218,7 @@ export default function Home() {
               </li>
             </ul>
 
-            <div className="mt-12 rounded-xl border border-border bg-card/50 p-6">
+            <div className="mt-8 rounded-xl border border-border bg-card/50 p-6">
               <h3 className="mb-3 flex items-center gap-2 text-sm font-semibold uppercase tracking-wider text-primary">
                 <GraduationCap className="size-4" aria-hidden />
                 Education
@@ -214,17 +232,17 @@ export default function Home() {
         </section>
 
         {/* Skills */}
-        <section id="skills" className="px-6 py-24 sm:py-28">
-          <Separator className="mb-16" />
+        <section id="skills" className="scroll-mt-24 px-6 py-16 sm:py-20">
+          <Separator className="mb-10" />
           <div className="mx-auto max-w-4xl">
             <div className="mb-4 flex items-center gap-3">
               <div className="h-1 w-12 rounded-full bg-primary" aria-hidden />
               <h2 className="text-2xl font-bold sm:text-3xl">Skills</h2>
             </div>
-            <p className="mb-12 max-w-xl text-muted-foreground">
+            <p className="mb-8 max-w-xl text-muted-foreground">
               Technologies and languages I use to build products.
             </p>
-            <div className="grid gap-10 sm:grid-cols-2">
+            <div className="grid gap-8 sm:grid-cols-2">
               {skillGroups.map((group) => {
                 const Icon = group.icon;
                 return (
@@ -238,8 +256,15 @@ export default function Home() {
                         <Badge
                           key={item}
                           variant="secondary"
-                          className="rounded-full px-4 py-2 text-sm font-medium transition-colors hover:border-primary/50"
+                          className="inline-flex items-center gap-2 rounded-full px-4 py-2 text-sm font-medium transition-colors hover:border-primary/50"
                         >
+                          <img
+                            src={skillIconUrl(item)}
+                            alt=""
+                            width={SKILL_ICON_SIZE}
+                            height={SKILL_ICON_SIZE}
+                            className="size-5 shrink-0"
+                          />
                           {item}
                         </Badge>
                       ))}
@@ -252,14 +277,14 @@ export default function Home() {
         </section>
 
         {/* Projects */}
-        <section id="projects" className="px-6 py-24 sm:py-28">
-          <Separator className="mb-16" />
+        <section id="projects" className="scroll-mt-24 px-6 py-16 sm:py-20">
+          <Separator className="mb-10" />
           <div className="mx-auto max-w-4xl">
             <div className="mb-4 flex items-center gap-3">
               <div className="h-1 w-12 rounded-full bg-primary" aria-hidden />
               <h2 className="text-2xl font-bold sm:text-3xl">Projects</h2>
             </div>
-            <p className="mb-12 max-w-xl text-muted-foreground">
+            <p className="mb-8 max-w-xl text-muted-foreground">
               A selection of projects I&apos;ve built — from AI-powered tools to full-stack applications.
             </p>
             <div className="space-y-6">
@@ -304,7 +329,7 @@ export default function Home() {
                 </Card>
               ))}
             </div>
-            <p className="mt-8 text-center text-sm text-muted-foreground">
+            <p className="mt-6 text-center text-sm text-muted-foreground">
               More projects on{" "}
               <Link
                 href="https://github.com/itsmemarkmalvar"
@@ -319,8 +344,8 @@ export default function Home() {
         </section>
 
         {/* Contact */}
-        <section id="contact" className="px-6 py-24 sm:py-28">
-          <Separator className="mb-16" />
+        <section id="contact" className="scroll-mt-24 px-6 py-16 sm:py-20">
+          <Separator className="mb-10" />
           <div className="mx-auto max-w-4xl">
             <div className="mb-4 flex items-center gap-3">
               <div className="h-1 w-12 rounded-full bg-primary" aria-hidden />
@@ -331,7 +356,7 @@ export default function Home() {
               <strong className="text-foreground">freelance projects</strong>, and{" "}
               <strong className="text-foreground">collaboration</strong>. Reach out — I&apos;d love to hear from you.
             </p>
-            <div className="mt-10 flex flex-wrap gap-4">
+            <div className="mt-8 flex flex-wrap gap-4">
               {contactLinks.map((item) => {
                 const Icon = item.icon;
                 return (
@@ -356,7 +381,7 @@ export default function Home() {
                 );
               })}
             </div>
-            <div className="mt-8">
+            <div className="mt-6">
               <Button size="lg" className="min-h-12 rounded-full px-7" asChild>
                 <Link href="mailto:malvar.593@gmail.com" className="inline-flex items-center gap-2">
                   <Mail className="size-5" aria-hidden />
